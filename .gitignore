@@ -1,0 +1,11 @@
+build
+dredger
+*.exe
+.idea
+examples/*/src
+go.work.sum
+.DS_Store
+.env
+dist
+templates/web/css/bootstrap-icons-*.zip
+tmp

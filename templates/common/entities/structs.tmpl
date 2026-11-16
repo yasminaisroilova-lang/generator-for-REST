@@ -1,0 +1,12 @@
+{{ define "structs" }}
+
+{{- range . }}
+  {{ ucfirst (camelcase .Name) }}
+  {{- if .NestedTypes }} {{ .Type }} {
+    {{ template "structs" .NestedTypes}}
+  }
+
+{{- else }} {{ if eq .Type "float" }}float64{{ else }}{{ .Type }}{{ end }} `json:"{{ .MarshalName }}" yaml:"{{ .MarshalName }}" xml:"{{ .MarshalName }}" form:"{{ .MarshalName }}"`  {{- end -}}
+{{ end }}
+
+{{- end }}
